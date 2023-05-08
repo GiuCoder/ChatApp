@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Join Room</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 2rem;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          Helvetica, Arial, sans-serif;
+      }
+
+      h1 {
+        margin-bottom: 1rem;
+      }
+
+      label {
+        display: block;
+        margin-bottom: 0.5rem;
+      }
+
+      input[type="text"] {
+        padding: 0.5rem;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+        width: 100%;
+        margin-bottom: 1rem;
+        box-sizing: border-box;
+        font-size: 1rem;
+      }
+
+      input[type="submit"] {
+        padding: 0.5rem;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      input[type="button"] {
+        padding: 0.5rem;
+        background-color: #333;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+      #delete-data {
+        position: fixed;
+        bottom: 1rem;
+        left: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Join Room</h1>
+    <form action="/chat" method="POST">
+      <label for="room-name">Room Name:</label>
+      <input type="text" id="room-name" name="roomName" required />
+      <label for="username">Your Name:</label>
+      <input type="text" id="username" name="username" required />
+      <input type="submit" value="Join Room" />
+      <input type="button" id="delete-data" value="Delete Data" />
+    </form>
+    <script>
+      // Get the delete data button element
+      const deleteDataButton = document.querySelector("#delete-data");
+
+      // Add event listener for button click
+      deleteDataButton.addEventListener("click", () => {
+        // Delete the web data
+        localStorage.clear(); // or sessionStorage.clear() if using session storage
+        alert("Web data has been deleted.");
+
+        // Delete all cookies
+        document.cookie.split(";").forEach((cookie) => {
+          document.cookie = cookie
+            .replace(/^ +/, "")
+            .replace(/=.*/, `=;expires=${new Date(0).toUTCString()};path=/`);
+        });
+
+        // Reset permission for geolocation
+        navigator.permissions
+          .revoke({ name: "geolocation" })
+          .then(() => alert("Geolocation permission has been reset."));
+
+        // Reload the page
+        window.location.reload();
+      });
+
+      document.addEventListener("DOMContentLoaded", () => {
+        // Get the form element
+        const form = document.querySelector("form");
+
+        // Add event listener for form submission
+        form.addEventListener("submit", (event) => {
+          // Prevent default form submission behavior
+          event.preventDefault();
+
+          // Get the values of the room name and username input fields
+          const roomName = document.querySelector("#room-name").value;
+          const username = document.querySelector("#username").value;
+
+          // Redirect the user to the chat room with the given room name and username
+          window.location.href = `/chat?roomName=${encodeURIComponent(
+            roomName
+          )}&username=${encodeURIComponent(username)}`;
+        });
+      });
+    </script>
+  </body>
+</html>

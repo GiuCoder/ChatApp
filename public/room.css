@@ -1,0 +1,52 @@
+/* Set the background color of system messages to transparent and text color to blue */
+.system-message {
+    background-color: transparent;
+    color: blue;
+  }
+  
+  /* Remove the bullet points from the unordered list */
+  ul {
+    list-style: none;
+  }
+  
+  /* Set the styling for the green dot indicating online status */
+  .online-dot {
+    width: 10px;
+    height: 10px;
+    background-color: green;
+    border-radius: 50%;
+    display: inline-block;
+    margin-right: 5px;
+  }
+  
+  /* Set the styling for the unordered list containing the online users */
+  .online-users-list {
+    list-style: none;
+    padding-left: 0;
+  }
+  
+  /* Set the styling for each list item containing an online user */
+  .online-users-list li {
+    display: flex; /* Use flexbox to align items */
+    align-items: center;
+    margin-bottom: 0.5rem;
+  }
+  
+  /* Set the styling for the dot indicating online status for each user */
+  .online-users-list li .dot {
+    height: 10px;
+    width: 10px;
+    border-radius: 50%;
+    margin-right: 0.5rem;
+  }
+  
+  /* Set the styling for the dot when the user is online */
+  .online-users-list li.online .dot {
+    background-color: green;
+  }
+  
+  /* Set the styling for the dot when the user is offline */
+  .online-users-list li.offline .dot {
+    background-color: gray;
+  }
+  

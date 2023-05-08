@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat Room</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="/room.css" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  </head>
+  <body>
+    <div class="container">
+      <ul id="messages" class="list-group mb-3"></ul>
+      <form id="message-form" class="mb-3">
+        <div
+          id="notification"
+          class="alert alert-warning alert-dismissible fade show d-none"
+          role="alert"
+        >
+          Please wait 2 seconds before sending another message.
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="alert"
+            aria-label="Close"
+          ></button>
+        </div>
+
+        <div class="input-group">
+          <label for="message-input" class="visually-hidden">Message:</label>
+          <input
+            id="message-input"
+            type="text"
+            autocomplete="off"
+            aria-label="Type your message here"
+            required
+            class="form-control"
+          />
+          <button
+            type="submit"
+            aria-label="Send message"
+            class="btn btn-primary"
+          >
+            Send
+          </button>
+          <button
+            type="button"
+            aria-label="Disconnect"
+            class="btn btn-danger ms-2"
+            id="disconnect-button"
+            style="position: fixed; bottom: 20px; left: 20px"
+          >
+            Disconnect
+          </button>
+        </div>
+      </form>
+      <div class="card mb-3">
+        <div class="card-header">Online Users</div>
+        <span class="online-dot"></span>
+        <ul id="user-list" class="list-group list-group-flush"></ul></span>
+      </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="https://cdn.socket.io/socket.io-3.1.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="/comput.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.0.2/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
