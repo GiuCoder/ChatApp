@@ -20,7 +20,7 @@ Users can see who is currently online in the chat room on the right-hand side of
 Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.🎉
 
-Emoji Key
+# Emoji Key
 📝 : Memo
 🔧 : Wrench
 🚀 : Rocket
